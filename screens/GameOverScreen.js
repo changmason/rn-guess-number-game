@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Button, Image } from "react-native";
+import { View, Text, StyleSheet, Button, Image } from "react-native";
 
 import TitleText from "../components/TitleText";
 import BodyText from "../components/BodyText";
+import Colors from "../constants/Colors";
 
 const GameOverScreen = (props) => {
   return (
@@ -10,16 +11,22 @@ const GameOverScreen = (props) => {
       <TitleText>The Game is Over!</TitleText>
       <View style={styles.imageContainer}>
         <Image
-          // source={require("../assets/success.png")}
-          source={{
-            uri: "https://media.istockphoto.com/photos/ama-dablam-mount-in-the-nepal-himalaya-picture-id485966046?k=20&m=485966046&s=612x612&w=0&h=gxP8DAYg54epuymP-eLMvh4hmlIm-AchRMwwNjzBUwE=",
-          }}
+          source={require("../assets/success.png")}
+          // source={{
+          //   uri: "https://media.istockphoto.com/photos/ama-dablam-mount-in-the-nepal-himalaya-picture-id485966046?k=20&m=485966046&s=612x612&w=0&h=gxP8DAYg54epuymP-eLMvh4hmlIm-AchRMwwNjzBUwE=",
+          // }}
           style={styles.image}
           resizeMode="cover"
         />
       </View>
-      <BodyText>Number of rounds: {props.roundsNumber}</BodyText>
-      <BodyText>Number was: {props.userNumber}</BodyText>
+      <View style={styles.resultContainer}>
+        <BodyText style={styles.resultText}>
+          Your phone needed{" "}
+          <Text style={styles.highlight}>{props.roundsNumber}</Text> to guess
+          the number <Text style={styles.highlight}>{props.userNumber} </Text>
+        </BodyText>
+      </View>
+
       <Button title="NEW GAME" onPress={props.onRestart} />
     </View>
   );
@@ -43,6 +50,18 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+  },
+  resultContainer: {
+    marginHorizontal: 30,
+    marginVertical: 15,
+  },
+  resultText: {
+    textAlign: "center",
+    fontSize: 20,
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: "open-sans-bold",
   },
 });
 
