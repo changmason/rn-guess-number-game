@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 
 import BodyText from "./BodyText";
-import Colors from "../constants/Colors";
+import Colors from "../constants/colors";
 
 const NumberContainer = (props) => {
   return (
